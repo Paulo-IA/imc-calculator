@@ -25,15 +25,23 @@
         <form>
             <fieldset>
                 <label>Peso (kg)</label>
-                <input type="text" placeholder="60">
+                <input
+                    type="text"
+                    placeholder="60"
+                    id="weight"
+                >
             </fieldset>
             
             <fieldset>
                 <label>Altura (m)</label>
-                <input type="text" placeholder="165">
+                <input
+                    type="text"
+                    placeholder="165"
+                    id="height"
+                >
             </fieldset>
 
-            <button>
+            <button id="calcButton" type="button">
                 Calcular IMC
                 <img src="./assets/arrow-right.svg" alt="Seta para Direita">
             </button>
@@ -41,18 +49,18 @@
     </main>
 
     <!-- alert -->
-    <div class="alert">
+    <div class="alert invisible" id="alert">
         <p>Digite somente números</p>
     </div>
 
     <!-- modal -->
-    <div class="modal invisible">
+    <div class="modal invisible" id="modal">
         <div class="modal-card">
             <div class="modal-header">
-                <img src="./assets/close.svg" alt="Fechar">
+                <img src="./assets/close.svg" alt="Fechar" id="closeModalButton">
             </div>
             <div class="modal-body">
-                <h1>Seu IMC é de 28</h1>
+                <h1 id="outputElement"></h1>
             </div>
 
         </div>
