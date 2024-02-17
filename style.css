@@ -20,8 +20,10 @@
     
     --input-bg: #DCE2E9;
     --input-border: rgba(73, 80, 87, 0.30);
+    --input-outline: #02799D;
     
     --button-bg: #02799D;
+    --button-bg-hover: #026786;
 }
 
 body, button, input {
@@ -29,5 +31,114 @@ body, button, input {
 }
 
 body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--page-bg);
+
     font-size: 1.6rem;
 }
+
+main {
+    width: min(42.8rem, 90%);
+    background-color: var(--white);
+    padding: 4.8rem 6.4rem 6.4rem;
+    border-radius: .6rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+
+    margin-top: -2rem;
+}
+
+main h1 {
+    color: var(--titles);
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 4rem;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+form fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+
+    border: 0;
+}
+
+fieldset label {
+    color: var(--texts);
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+}
+
+fieldset input {
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    border-radius: .4rem;
+    padding: 1.6rem;
+
+    color: var(--texts-v);
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+fieldset input:focus {
+    outline: 1px solid var(--input-outline);
+}
+
+fieldset input::placeholder {
+    color: var(--placeholder);
+}
+
+form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .8rem;
+    
+    background-color: var(--button-bg);
+    
+    margin-top: 1.6rem;
+    padding: 1.6rem;
+    border: 0;
+    border-radius: .4rem;
+    
+    color: var(--white);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2rem;
+
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: var(--button-bg-hover);
+}
+
+form button:focus {
+    outline: 1px solid var(--input-outline);
+}
+
+/* modal */
+.modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    
+    width: 100vw;
+
+    background-color: var(--modal-bg);
+
+}
+
+.invisible { display: none; }
