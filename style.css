@@ -6,6 +6,26 @@
 
 :root {
     font-size: 62.5%;
+    
+    --white: #fff;
+    
+    --page-bg: #040924;
+    --modal-bg: rgba(0, 0, 0, .7);
+    --alert-bg: #F03E3E;
+
+    --titles: #0C3440;
+    --texts: #00453A;
+    --texts-v: #212529;
+    --placeholder: rgba(73, 80, 87, .5);
+    
+    --input-bg: #DCE2E9;
+    --input-border: rgba(73, 80, 87, 0.30);
+    
+    --button-bg: #02799D;
+}
+
+body, button, input {
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
