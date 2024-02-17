@@ -201,6 +201,28 @@ form button:focus {
 
 .invisible { display: none; }
 
+@media (max-width: 375px) {
+    main {
+        padding: 2.4rem 3.2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .modal .modal-card {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+    .modal-card .modal-body {
+        padding: 0;
+
+        height: calc(100% - 4.8rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 @keyframes down {
     0% {
         top: -100%;
