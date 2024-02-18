@@ -203,7 +203,20 @@ form button:focus {
 
 @media (max-width: 375px) {
     main {
-        padding: 2.4rem 3.2rem;
+        padding: 2.4rem 0;
+    }
+
+    h1 {
+        margin: 0 auto;
+    }
+
+    fieldset {
+        margin: 0 auto;
+        width: 90%;
+    }
+    button {
+        margin: 0 auto;
+        width: 90%;
     }
 }
 
