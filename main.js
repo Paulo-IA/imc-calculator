@@ -1,63 +1,73 @@
-const calcButton = document.querySelector("#calcButton")
-const closeModalButton = document.querySelector("#closeModalButton")
+const Form = {
+    fields: {
+        weight: document.querySelector("#weight"),
+        height: document.querySelector("#height")
+    },
+    button: document.querySelector("#calcButton"),
+    validate() {
+        return ( Number(this.fields.weight.value) && this.fields.weight.value != '') 
+            && ( Number(this.fields.height.value) && this.fields.height.value != '') 
+    }
+}
 
-const alert = document.querySelector("#alert")
-const modal = document.querySelector("#modal")
+const Modal = {
+    isOpen: false,
+    wrapper: document.querySelector("#modal"),
+    message: document.querySelector("#modalMessage"),
+    closeButton: document.querySelector("#closeModalButton"),
+    open() {
+        this.wrapper.classList.remove('invisible')
+        this.isOpen = true
+    },
+    close() {
+        this.wrapper.classList.add('invisible')
+        this.isOpen = false
+    }
+}
 
-const weightInput = document.querySelector("#weight")
-const heightInput = document.querySelector("#height")
+const Alert = {
+    wrapper: document.querySelector("#alert"),
+    open() {
+        this.wrapper.classList.remove('invisible')
+    },
+    close() {
+        this.wrapper.classList.add('invisible')
+    }
+}
 
-const outputElement = document.querySelector("#outputElement")
+Form.button.addEventListener('click', handleCalcIMC)
+Modal.closeButton.addEventListener('click', handleCloseModal)
 
-closeModalButton.addEventListener('click', handleToggleModalVisibility)
-calcButton.addEventListener('click', handleCalcIMC)
-document.addEventListener('keydown', handleToggleModalVisibilityConditional)
+document.addEventListener('keydown', handleCloseModalWithEscape)
 document.addEventListener('keydown', handleSubmitWithEnter)
 
-
+function handleCloseModal() { Modal.close() }
 
 function handleCalcIMC() {
-    if (
-        handleCheckInputValue(weightInput) &&
-        handleCheckInputValue(heightInput)
-    ) {
-        let imc = calcImc(weightInput.value, heightInput.value)
 
-        outputElement.textContent = `Seu IMC é de ${imc.toFixed(2)}`
+    if (Form.validate()) {
+        let imc = calcImc(Form.fields.weight.value, Form.fields.height.value)
 
-        handleToggleModalVisibility()
-        alert.classList.add("invisible")
+        Modal.message.textContent = `Seu IMC é de ${imc.toFixed(2)}`
+
+        Modal.open()
+        Alert.close()
     } else {
-        alert.classList.remove("invisible")
+        Alert.open()
     }
 
 }
 
-function handleCheckInputValue(input) {
-
-    if (Number(input.value) && input.value != '') {
-        return true
-    }
-
-    return false
-}
-
-function handleToggleModalVisibilityConditional(e) {
-    if (!modal.classList.contains('invisible') && e.key == 'Escape') {
-        handleToggleModalVisibility();
+function handleCloseModalWithEscape(e) {
+    if (Modal.isOpen && e.key == 'Escape') {
+        Modal.close()
     }
 }
 
 function handleSubmitWithEnter(e) {
-    if (modal.classList.contains('invisible') && e.key == 'Enter') {
+    if (!Modal.isOpen && e.key == 'Enter') {
         handleCalcIMC();
     }
 }
 
-function handleToggleModalVisibility() {
-    modal.classList.toggle('invisible')
-}
-
-function calcImc(w, h) {
-    return w/((h/100) * (h/100))
-}
+function calcImc(w, h) { return w/((h/100) * (h/100)) }
