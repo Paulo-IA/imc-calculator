@@ -19,13 +19,13 @@
     >
 
     <!-- defer -->
-    <script src="main.js" defer></script>
+    <script src="./js/main.js" defer type="module"></script>
 </head>
 <body>
     <main>
         <h1>Cálculo de IMC</h1>
 
-        <form>
+        <form id="imcForm">
             <fieldset>
                 <label for="weight">Peso (kg)</label>
                 <input
@@ -44,7 +44,7 @@
                 >
             </fieldset>
 
-            <button id="calcButton" type="button">
+            <button id="calcButton" type="submit">
                 Calcular IMC
                 <img src="./assets/arrow-right.svg" alt="Seta para Direita">
             </button>
