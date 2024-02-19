@@ -182,7 +182,7 @@ form button:focus {
 /* alert */
 .alert {
     position: absolute;
-    top: 0;
+    top: -100%;
     left: 0;
     
     width: 100vw;
@@ -190,7 +190,11 @@ form button:focus {
     text-align: center;
     background-color: var(--alert-bg);
 
-    animation: down 1s;
+    transition: all 1s;
+}
+
+.openAlert {
+    top: 0;    
 }
 
 .alert p {

@@ -6,6 +6,9 @@ import { calculateIMC } from "./utils.js"
 
 Form.self.addEventListener('submit', handleCalculateIMC)
 
+Form.fields.weight.addEventListener('input', handleCloseAlert)
+Form.fields.height.addEventListener('input', handleCloseAlert)
+
 function handleCalculateIMC(event) {
     event.preventDefault();
 
@@ -13,8 +16,6 @@ function handleCalculateIMC(event) {
         Alert.open();
         return;
     }
-    
-    Alert.close()
 
     let { weight, height } = Form.getFieldsValue()
 
@@ -25,4 +26,8 @@ function handleCalculateIMC(event) {
 function displayResultMessage(result) {
     Modal.message.textContent = `Seu IMC é de ${result.toFixed(2)}`
     Modal.open()
+}
+
+function handleCloseAlert() {
+    Alert.close()
 }

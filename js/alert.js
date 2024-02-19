@@ -1,9 +1,9 @@
 export const Alert = {
     wrapper: document.querySelector("#alert"),
     open() {
-        this.wrapper.classList.remove('invisible')
+        this.wrapper.classList.add('openAlert')
     },
     close() {
-        this.wrapper.classList.add('invisible')
+        this.wrapper.classList.remove('openAlert')
     }
 }
